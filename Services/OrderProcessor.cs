@@ -8,7 +8,7 @@ namespace SieMarket.Services
         public decimal GetFinalPrice(Order order)
         {
             decimal total = order.TotalAmount;
-            if(total > 500)
+            if (total > 500)
                 return total * 0.9m;
             return total;
         }
@@ -26,7 +26,7 @@ namespace SieMarket.Services
 
                 foreach (var t in totals)
                 {
-                    if (t.Name == o.CustomerName)
+                    if (t.Name == o.CustomerOrder.Name)
                     {
                         found = t;
                         break;
@@ -40,10 +40,10 @@ namespace SieMarket.Services
                 else
                 {
                     Customer ct = new Customer();
-                    ct.Name = o.CustomerName;
+                    ct.Name = o.CustomerOrder.Name;
                     ct.Amount = price;
-                    ct.Email = o.CustomerEmail;
-                    ct.Phone = o.CustomerPhone;
+                    ct.Email = o.CustomerOrder.Email;
+                    ct.Phone = o.CustomerOrder.Phone;
                     totals.Add(ct);
                 }
             }
@@ -107,32 +107,27 @@ namespace SieMarket.Services
                 }
             }
 
-            List<ProductStat> stats = new List<ProductStat>();
-            for (int i = 0; i < names.Count; i++)
+            for (int i = 0; i < names.Count - 1; i++)
             {
-                ProductStat ps = new ProductStat();
-                ps.Name = names[i];
-                ps.Quantity = qtys[i];
-                stats.Add(ps);
-            }
-
-            for (int i = 0; i < stats.Count - 1; i++)
-            {
-                for (int j = i + 1; j < stats.Count; j++)
+                for (int j = i + 1; j < names.Count; j++)
                 {
-                    if (stats[i].Quantity < stats[j].Quantity)
+                    if (qtys[i] < qtys[j])
                     {
-                        ProductStat temp = stats[i];
-                        stats[i] = stats[j];
-                        stats[j] = temp;
+                        int tempQty = qtys[i];
+                        qtys[i] = qtys[j];
+                        qtys[j] = tempQty;
+
+                        string tempName = names[i];
+                        names[i] = names[j];
+                        names[j] = tempName;
                     }
                 }
             }
 
             List<string> res = new List<string>();
-            foreach (var s in stats)
+            for (int i = 0; i < names.Count; i++)
             {
-                res.Add(s.Name + ": " + s.Quantity);
+                res.Add(names[i] + ": " + qtys[i]);
             }
             return res;
         }

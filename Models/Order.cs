@@ -11,9 +11,8 @@ namespace SieMarket.Models
         private static int counterId = 100;
 
         public int OrderID { get; private set; }
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-        public string CustomerPhone { get; set; }
+        public DateTime OrderDate { get; private set; }
+        public Customer CustomerOrder { get; set; }
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
         public decimal TotalAmount => Items.Sum(item => item.TotalPrice);
         
@@ -21,6 +20,7 @@ namespace SieMarket.Models
         {
             counterId++;
             this.OrderID = counterId;
+            this.OrderDate = DateTime.Now;
         }
     }
 }
