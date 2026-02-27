@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SieMarket", "SieMarket.csproj", "{E494EFA5-6F44-44FA-B421-A3C1BCEB5644}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E494EFA5-6F44-44FA-B421-A3C1BCEB5644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E494EFA5-6F44-44FA-B421-A3C1BCEB5644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E494EFA5-6F44-44FA-B421-A3C1BCEB5644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E494EFA5-6F44-44FA-B421-A3C1BCEB5644}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08609C45-27AB-4A12-993D-9408562B1367}
+	EndGlobalSection
+EndGlobal
