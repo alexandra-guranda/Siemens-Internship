@@ -8,7 +8,7 @@ namespace SieMarket.Models
 {
     public class ProductStat
     {
-        public string Name { get; set; }
-        public int Quantity { get; set; }
+        public string name { get; set; }
+        public int quantity { get; set; }
     }
 }

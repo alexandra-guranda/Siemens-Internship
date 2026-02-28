@@ -8,10 +8,10 @@ namespace SieMarket.Models
 {
     public class OrderItem
     {
-        public string ProductName { get; set; }
-        public int  Quantity { get; set; }
-        public decimal Price { get; set; }
-        public decimal TotalPrice => Quantity * Price;
+        public string productName { get; set; }
+        public int  quantity { get; set; }
+        public decimal price { get; set; }
+        public decimal totalPrice => quantity * price;
     }
 
 }

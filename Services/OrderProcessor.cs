@@ -7,7 +7,7 @@ namespace SieMarket.Services
     {
         public decimal GetFinalPrice(Order order)
         {
-            decimal total = order.TotalAmount;
+            decimal total = order.totalAmount;
             if (total > 500)
                 return total * 0.9m;
             return total;
@@ -26,7 +26,7 @@ namespace SieMarket.Services
 
                 foreach (var t in totals)
                 {
-                    if (t.Name == o.CustomerOrder.Name)
+                    if (t.name == o.customerData.name)
                     {
                         found = t;
                         break;
@@ -35,15 +35,15 @@ namespace SieMarket.Services
 
                 if (found != null)
                 {
-                    found.Amount += price;
+                    found.amount += price;
                 }
                 else
                 {
                     Customer ct = new Customer();
-                    ct.Name = o.CustomerOrder.Name;
-                    ct.Amount = price;
-                    ct.Email = o.CustomerOrder.Email;
-                    ct.Phone = o.CustomerOrder.Phone;
+                    ct.name = o.customerData.name;
+                    ct.amount = price;
+                    ct.email = o.customerData.email;
+                    ct.phone = o.customerData.phone;
                     totals.Add(ct);
                 }
             }
@@ -51,24 +51,24 @@ namespace SieMarket.Services
             decimal max = -1;
             foreach (var t in totals)
             {
-                if (t.Amount > max)
+                if (t.amount > max)
                 {
-                    max = t.Amount;
+                    max = t.amount;
                 }
             }
 
             string topNames = "";
             foreach (var t in totals)
             {
-                if (t.Amount == max)
+                if (t.amount == max)
                 {
                     if (topNames == "")
                     {
-                        topNames = t.Name;
+                        topNames = t.name;
                     }
                     else
                     {
-                        topNames = topNames + ", " + t.Name;
+                        topNames = topNames + ", " + t.name;
                     }
                 }
             }
@@ -83,12 +83,12 @@ namespace SieMarket.Services
 
             foreach (var o in orders)
             {
-                foreach (var i in o.Items)
+                foreach (var i in o.items)
                 {
                     int idx = -1;
                     for (int j = 0; j < names.Count; j++)
                     {
-                        if (names[j] == i.ProductName)
+                        if (names[j] == i.productName)
                         {
                             idx = j;
                             break;
@@ -97,12 +97,12 @@ namespace SieMarket.Services
 
                     if (idx != -1)
                     {
-                        qtys[idx] += i.Quantity;
+                        qtys[idx] += i.quantity;
                     }
                     else
                     {
-                        names.Add(i.ProductName);
-                        qtys.Add(i.Quantity);
+                        names.Add(i.productName);
+                        qtys.Add(i.quantity);
                     }
                 }
             }

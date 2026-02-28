@@ -8,9 +8,9 @@ namespace SieMarket.Models
 {
     public class Customer
     {
-        public string Name { get; set; }
-        public decimal Amount { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public string name { get; set; }
+        public decimal amount { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
     }
 }
